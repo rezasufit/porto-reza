@@ -52,7 +52,6 @@
     <div id="magic-cursor">
         <div id="ball"></div>
     </div>
-    <!-- START MENU DESIGN AREA-->
     <header class="main-header">
         <div class="header-upper">
             <div class="container">
@@ -91,7 +90,6 @@
             </div>
         </div>
     </header>
-    <!-- // END MENU DESIGN AREA-->
     <div class="sidebar__area">
         <div class="sidebar__wrapper">
             <div class="sidebar__close">
@@ -105,10 +103,7 @@
         </div>
     </div>
     <div class="body-overlay"></div>
-
     <div id="portfolio-container"></div>
-
-    <!-- START FOOTER DESIGN AREA -->
     <footer class="main-footer">
         <div class="container">
             <div class="row">
@@ -124,7 +119,6 @@
             </div>
         </div>
     </footer>
-    <!-- / END FOOTER DESIGN AREA -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/appear.min.js"></script>
@@ -142,22 +136,27 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // 1. DATA BRAND: Tambahkan brand baru beserta foldernya di sini
+            // 1. DATA BRAND: Tambahkan brand dan daftar link tujuan masing-masing gambar
             const portfolioData = [{
-                    brandName: "Creative Ads",
-                    folderPath: "cpas",
-                    totalImages: 12
-                }
-                // Tambahkan brand lain di sini jika butuh
-            ];
+                brandName: "Web Development",
+                folderPath: "web",
+                totalImages: 6,
+                // Masukkan link tujuan sesuai urutan gambar (Gambar 1 sampai 6)
+                targetLinks: [
+                    "https://provus.id/",
+                    "https://provus.my.id/#/corewhey",
+                    "https://provus.my.id/#/crematrix",
+                    "https://provus.my.id/",
+                    "https://provus.my.id/#/limitbreak",
+                    "https://provus.my.id/#/megamass"
+                ]
+            }];
 
-            // Inisialisasi variabel
             const container = document.getElementById('portfolio-container');
             let htmlContent = '';
 
             // 2. LOOPING DATA & RENDER HTML
             portfolioData.forEach(brand => {
-                // Render Judul Brand
                 htmlContent += `
                 <section class="single-page-hero-area" style="padding-bottom: 20px;">
                     <div class="container">
@@ -173,17 +172,21 @@
                     <div class="container-fluid">
                         <div class="row g-4 portfolio-grid">`;
 
-                // Render Media Video Portfolio
                 for (let i = 1; i <= brand.totalImages; i++) {
                     let categoryClass = (i % 2 === 0) ? "category-2" : "category-1";
-                    let mediaPath = `assets/images/projects/${brand.folderPath}/${i}.webm`;
+                    let imagePath = `assets/images/projects/${brand.folderPath}/${i}.webp`;
+
+                    // Mengambil link dari array targetLinks (index dimulai dari 0, makanya i - 1)
+                    let targetUrl = brand.targetLinks[i - 1];
 
                     htmlContent += `
                             <div class="col-md-6 col-xl-4 portfolio-item ${categoryClass}">
-                                <div class="portfolio-box">
-                                    <video src="${mediaPath}" autoplay loop muted playsinline style="width: 100%; height: auto; display: block; object-fit: cover;"></video>
-                                    <span class="portfolio-category">Ads</span>
-                                </div>
+                                <a href="${targetUrl}" target="_blank" rel="noopener noreferrer">
+                                    <div class="portfolio-box">
+                                        <img src="${imagePath}" alt="${brand.brandName} Post ${i}" data-rjs="2">
+                                        <span class="portfolio-category">View Website</span>
+                                    </div>
+                                </a>
                             </div>`;
                 }
 
@@ -194,9 +197,7 @@
             });
 
             // 3. MASUKKAN KE DALAM DOM
-            if (container) {
-                container.innerHTML = htmlContent;
-            }
+            container.innerHTML = htmlContent;
         });
     </script>
 </body>
