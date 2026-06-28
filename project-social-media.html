@@ -24,6 +24,47 @@
     <link rel="stylesheet" href="assets/css/blog.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <style>
+        /* Container untuk nama brand dan ikon, menggunakan flexbox untuk menatanya */
+        
+        .brand-header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px !important;
+            /* Ini buat ngasih jarak ke gambar di bawahnya */
+        }
+        
+        .brand-header-flex h2 {
+            margin: 0 !important;
+            padding: 0 !important;
+            line-height: 1 !important;
+        }
+        
+        .brand-instagram-icon {
+            color: #d5d5d5 !important;
+            font-size: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 0 !important;
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+        
+        .brand-instagram-icon:hover {
+            color: #ee4818 !important;
+            transform: translateY(-2px) scale(1.1);
+        }
+        /* Perbaikan padding section agar lebih rapi, mengganti style inline */
+        
+        .single-page-hero-area {
+            padding-bottom: 0px !important;
+            /* Padding-bottom sudah dipindah ke .brand-header-flex */
+        }
+    </style>
 </head>
 
 <body>
@@ -52,7 +93,6 @@
     <div id="magic-cursor">
         <div id="ball"></div>
     </div>
-    <!-- START MENU DESIGN AREA-->
     <header class="main-header">
         <div class="header-upper">
             <div class="container">
@@ -91,7 +131,6 @@
             </div>
         </div>
     </header>
-    <!-- // END MENU DESIGN AREA-->
     <div class="sidebar__area">
         <div class="sidebar__wrapper">
             <div class="sidebar__close">
@@ -106,7 +145,6 @@
     </div>
     <div class="body-overlay"></div>
     <div id="portfolio-container"></div>
-    <!-- START FOOTER DESIGN AREA -->
     <footer class="main-footer">
         <div class="container">
             <div class="row">
@@ -122,7 +160,6 @@
             </div>
         </div>
     </footer>
-    <!-- / END FOOTER DESIGN AREA -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/appear.min.js"></script>
@@ -140,37 +177,44 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // 1. DATA BRAND: Tambahkan brand baru beserta foldernya di sini
-            const portfolioData = [{
-                brandName: "Provus",
-                folderPath: "provus", // Sesuai contoh kamu, ini pakai folder sufit
-                totalImages: 12
-            }, {
-                brandName: "Susufitnessku",
-                folderPath: "sufit", // Ganti nama folder jika ada folder khusus susufitnessku
-                totalImages: 9
-            }, {
-                brandName: "Leanlatte",
-                folderPath: "leanlatte", // Ganti nama folder jika ada folder khusus susufitnessku
-                totalImages: 6
-            }, {
-                brandName: "Strongman",
-                folderPath: "strongman", // Ganti nama folder jika ada folder khusus susufitnessku
-                totalImages: 12
-            }, ];
+                    // 1. DATA BRAND: Tambahkan brand baru beserta foldernya di sini
+                    const portfolioData = [{
+                        brandName: "Provus",
+                        folderPath: "provus", // Sesuai contoh kamu, ini pakai folder sufit
+                        totalImages: 12,
+                        instagramLink: "https://www.instagram.com/provusofficial"
+                    }, {
+                        brandName: "Susufitnessku",
+                        folderPath: "sufit", // Ganti nama folder jika ada folder khusus susufitnessku
+                        totalImages: 9,
+                        instagramLink: "https://www.instagram.com/provusofficial"
+                    }, {
+                        brandName: "Leanlatte",
+                        folderPath: "leanlatte", // Ganti nama folder jika ada folder khusus susufitnessku
+                        totalImages: 6,
+                        instagramLink: "https://www.instagram.com/provusofficial"
+                    }, {
+                        brandName: "Strongman",
+                        folderPath: "strongman", // Ganti nama folder jika ada folder khusus susufitnessku
+                        totalImages: 12,
+                        instagramLink: "https://www.instagram.com/provusofficial"
+                    }, ];
 
-            const container = document.getElementById('portfolio-container');
-            let htmlContent = '';
+                    const container = document.getElementById('portfolio-container');
+                    let htmlContent = '';
 
-            // 2. LOOPING DATA & RENDER HTML
-            portfolioData.forEach(brand => {
-                // Render Judul Brand
-                htmlContent += `
-                <section class="single-page-hero-area" style="padding-bottom: 20px;">
+                    // 2. LOOPING DATA & RENDER HTML
+                    portfolioData.forEach(brand => {
+                                // MODIFIED: Render Judul Brand dan Ikon Instagram (jika ada) menggunakan struktur Flexbox yang rapi
+                                htmlContent += `
+                <section class="single-page-hero-area">
                     <div class="container">
                         <div class="row align-items-center text-center">
                             <div class="col-lg-12">
-                                <h2>${brand.brandName}</h2>
+                                <div class="brand-header-flex">
+                                    <h2>${brand.brandName}</h2>
+                                    ${brand.instagramLink ? `<a href="${brand.instagramLink}" target="_blank" rel="noopener noreferrer" class="brand-instagram-icon"><i class="ri-instagram-line"></i></a>` : ''}
+                                </div>
                             </div>
                         </div>
                     </div>
