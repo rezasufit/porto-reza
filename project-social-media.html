@@ -181,23 +181,23 @@
                     const portfolioData = [{
                         brandName: "Provus",
                         folderPath: "provus", // Sesuai contoh kamu, ini pakai folder sufit
-                        totalImages: 12,
+                        totalImages: 13,
                         instagramLink: "https://www.instagram.com/provusofficial"
                     }, {
                         brandName: "Susufitnessku",
                         folderPath: "sufit", // Ganti nama folder jika ada folder khusus susufitnessku
                         totalImages: 9,
-                        instagramLink: "https://www.instagram.com/provusofficial"
+                        instagramLink: "https://www.instagram.com/susufitnessku"
                     }, {
                         brandName: "Leanlatte",
                         folderPath: "leanlatte", // Ganti nama folder jika ada folder khusus susufitnessku
                         totalImages: 6,
-                        instagramLink: "https://www.instagram.com/provusofficial"
+                        instagramLink: "https://www.instagram.com/leanlatte.id"
                     }, {
                         brandName: "Strongman",
                         folderPath: "strongman", // Ganti nama folder jika ada folder khusus susufitnessku
                         totalImages: 12,
-                        instagramLink: "https://www.instagram.com/provusofficial"
+                        instagramLink: "https://www.instagram.com/kopistrongman"
                     }, ];
 
                     const container = document.getElementById('portfolio-container');
@@ -224,8 +224,8 @@
                     <div class="container-fluid">
                         <div class="row g-4 portfolio-grid">`;
 
-                // Render Gambar Portfolio sesuai jumlah totalImages
-                for (let i = 1; i <= brand.totalImages; i++) {
+                // Render Gambar Portfolio secara menurun murni (dari totalImages ke 1)
+                for (let i = brand.totalImages; i >= 1; i--) {
                     let categoryClass = (i % 2 === 0) ? "category-2" : "category-1";
                     let imagePath = `assets/images/projects/${brand.folderPath}/${i}.webp`;
 
