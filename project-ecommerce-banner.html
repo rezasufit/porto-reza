@@ -182,26 +182,11 @@
         document.addEventListener("DOMContentLoaded", function() {
                     // 1. DATA BRAND: Tambahkan brand baru beserta foldernya di sini
                     const portfolioData = [{
-                        brandName: "Provus",
-                        folderPath: "provus", // Sesuai contoh kamu, ini pakai folder sufit
-                        totalImages: 13,
-                        instagramLink: "https://www.instagram.com/provusofficial"
-                    }, {
-                        brandName: "Susufitnessku",
-                        folderPath: "sufit", // Ganti nama folder jika ada folder khusus susufitnessku
-                        totalImages: 9,
-                        instagramLink: "https://www.instagram.com/susufitnessku"
-                    }, {
-                        brandName: "Leanlatte",
-                        folderPath: "leanlatte", // Ganti nama folder jika ada folder khusus susufitnessku
-                        totalImages: 6,
-                        instagramLink: "https://www.instagram.com/leanlatte.id"
-                    }, {
-                        brandName: "Strongman",
-                        folderPath: "strongman", // Ganti nama folder jika ada folder khusus susufitnessku
-                        totalImages: 12,
-                        instagramLink: "https://www.instagram.com/kopistrongman"
-                    }, ];
+                        brandName: "Ecommerce Banner",
+                        folderPath: "ecommerce-banner", // Sesuai contoh kamu, ini pakai folder sufit
+                        totalImages: 8,
+                        // instagramLink: "https://www.instagram.com/provusofficial"
+                    }];
 
                     const container = document.getElementById('portfolio-container');
                     let htmlContent = '';
@@ -237,7 +222,6 @@
                                 <a href="${imagePath}" class="work-popup">
                                     <div class="portfolio-box">
                                         <img src="${imagePath}" alt="${brand.brandName} Post ${i}" data-rjs="2">
-                                        <span class="portfolio-category">Feed</span>
                                     </div>
                                 </a>
                             </div>`;
